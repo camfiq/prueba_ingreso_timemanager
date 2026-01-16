@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block body %}
+
+
+<div class="py-5 ">
+    <h1 >Usuarios</h1>
+
+    <div class="mt-5">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Email</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for usuario in usuarios %}
+    <tr>
+      <th scope="row">{{ usuario.id }}</th>
+      <td>{{ usuario.nombre }}</td>
+      <td>{{ usuario.apellido }}</td>
+      <td>{{ usuario.email }}</td>
+      <td>
+        <a href="{{ path('tareas_usuario', {'usuarioId': usuario.id}) }}" class="btn btn-primary btn-sm">Ver Tareas</a>
+      </td>
+    </tr>
+  {% else %}
+    <tr>
+      <td colspan="5">No se encontraron usuarios.</td>
+    </tr>
+  {% endfor %}
+   
+  </tbody>
+</table>
+</div>
+</div>
+{% endblock %}

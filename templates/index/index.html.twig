@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block body %}
+
+
+<div class="py-5 ">
+    <h1 >Prueba Ingreso Timemanager</h1>
+
+    <h2 class="font-weight-bold">Camilo Andrés Fique </h2>
+    <ul class="mt-5">
+        <li>Link del repositorio <a href="https://github.com/CamiloFique/prueba-ingreso-timemanager" target="_blank">https://github.com/CamiloFique/prueba-ingreso-timemanager</a></li>
+        <li>Link a usuarios ( Desde ahí se pueden ver las tareas por usuario): <a href="{{ path('usuarios_listar') }}">{{ url('usuarios_listar') }}</a> </li>
+        <li>Ejemplo directo a tareas por usuario:: <a href="{{ path('tareas_usuario', {'usuarioId': 1}) }}">{{ url('tareas_usuario', {'usuarioId': 1}) }}</a> </li>
+        <li>API para listar usuarios en formato JSON: <a href="{{ path('api_usuarios_listar') }}">{{ url('api_usuarios_listar') }}</a> </li>
+        <li>API para listar tareas por usuario en formato JSON (Ejemplo usuarioId=1): <a href="{{ path('api_tareas_usuario', {'usuarioId': 1}) }}">{{ url('api_tareas_usuario', {'usuarioId': 1}) }}</a> </li>
+    </ul>
+
+    <img src="{{ asset('img/diagrama openatlas.webp') }}" alt="Diagrama OpenAtlas" class="mt-5" style="width: 100%;">
+</div>
+{% endblock %}

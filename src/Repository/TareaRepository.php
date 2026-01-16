@@ -16,28 +16,21 @@ class TareaRepository extends ServiceEntityRepository
         parent::__construct($registry, Tarea::class);
     }
 
-//    /**
-//     * @return Tarea[] Returns an array of Tarea objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('t.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Tarea
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function obtenerTareasPorUsuario(int $usuarioId): array
+    {
+        return $this->createQueryBuilder('t')
+            ->select(
+                't.id AS tarea_id',
+                't.nombre AS tarea_nombre',
+                'p.nombre AS proyecto_nombre',
+                'pu.tarifa AS tarifa',
+            )
+            ->join('t.proyecto', 'p')
+            ->join('p.UsuariosAsignados', 'pu')
+            ->join('pu.usuario', 'u')
+            ->where('u.id = :usuarioId')
+            ->setParameter('usuarioId', $usuarioId)
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

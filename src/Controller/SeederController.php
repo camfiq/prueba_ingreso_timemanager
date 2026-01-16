@@ -16,6 +16,9 @@ final class SeederController extends AbstractController
     #[Route('/seeder', name: 'app_seeder')]
     public function index(EntityManagerInterface $em): Response
     {
+
+
+
         // Usuarios
         $usuario = new Usuario();
         $usuario->setNombre('Camilo');
@@ -75,6 +78,6 @@ final class SeederController extends AbstractController
 
         $em->flush();
 
-        return new Response('Datos sembrados correctamente.');
+        return new Response('Datos agregados correctamente.');
     }
 }

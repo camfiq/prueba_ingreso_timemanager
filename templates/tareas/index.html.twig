@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tareas por usuario{% endblock %}
+
+{% block body %}
+
+
+<div class="py-5 ">
+    <h1 class="d-flex align-items-center gap-3" > <a class="btn btn-secondary  font-weight-bold" href="{{ path('usuarios_listar') }}">&#8592;</a> Tareas del usuario {{ usuario.nombre }} {{ usuario.apellido }}</h1>
+
+    <div class="mt-5">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre de la tarea</th>
+      <th scope="col">Nombre del proyecto</th>
+      <th scope="col">Tarifa</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for tarea in tareas %}
+    <tr>
+      <th scope="row">{{ tarea.tarea_id }}</th>
+      <td>{{ tarea.tarea_nombre }}</td>
+      <td>{{ tarea.proyecto_nombre }}</td>
+      <td>${{ tarea.tarifa|number_format(0, '.', ',') }}</td>
+
+    </tr>
+  {% else %}
+    <tr>
+      <td colspan="4">No se encontraron tareas.</td>
+    </tr>
+  {% endfor %}
+   
+  </tbody>
+</table>
+</div>
+</div>
+{% endblock %}
+
